@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Rick and Morty</string>
+    
+    <string name="error_featching_new_data">Error</string>
+    <string name="time_out_error">Error while retrieving data information from server </string>
+    <string name="cant_connect">Can\'t Connect</string>
+    
+    <string name="btn_retry">Retry</string>
+    <string name="tap_to_reload">Tap to reload</string>
+    <string name="no_results">No Results</string>
+
+</resources>

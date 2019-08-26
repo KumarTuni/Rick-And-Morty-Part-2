@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="vertical">
+        
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="5dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
+            
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/cardBackground"
+                android:orientation="vertical">
+    
+                <com.example.rickandmorty.view.utils.SquareImageView
+                    android:id="@+id/imageImgV"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_below="@id/nameTxtV"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/test"
+                    app:imageUrl="@{character.image}" />
+                <TextView
+                    android:id="@+id/nameTxtV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/cardBackground"
+                    android:gravity="center"
+                    android:paddingBottom="6dp"
+                    android:paddingEnd="15dp"
+                    android:paddingStart="15dp"
+                    android:paddingTop="7dp"
+                    android:text="@{character.name}"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp"
+                    android:visibility="gone" />
+                
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility='@{character.status.equalsIgnoreCase("Alive")? View.GONE:View.VISIBLE,default=gone}'
+                    android:layout_alignTop="@id/imageImgV"
+                    android:layout_alignBottom="@id/imageImgV"
+                    android:background="#7F000000"/>
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:rotation="-45"
+                    android:shadowColor="#fff"
+                    android:shadowDx="20"
+                    android:shadowDy="20"
+                    android:shadowRadius="10"
+                    android:text="Dead"
+                    android:textColor="#C90A0A"
+                    android:textSize="44sp"
+                    android:textStyle="bold"
+                    android:visibility='@{character.status.equalsIgnoreCase("Alive")? View.GONE:View.VISIBLE,default=gone}' />
+                
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignBottom="@id/imageImgV"
+                    android:layout_alignTop="@id/imageImgV"
+                    android:clickable="true"
+                    android:background="?attr/selectableItemBackground"
+                    android:focusable="true"
+                    android:onClick="@{()->itemClickListner.onClick(character)}" />
+                
+            
+            </RelativeLayout>
+        
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+    
+    <data>
+        
+        <import type="com.example.rickandmorty.view.callbacks.RecyclerViewItemClickListner" />
+        
+        <import type="android.view.View" />
+        
+        <variable
+            name="character"
+            type="com.example.rickandmorty.model.data.Character" />
+        
+        <variable
+            name="itemClickListner"
+            type="RecyclerViewItemClickListner&lt;com.example.rickandmorty.model.data.Character&gt;" />
+    
+    </data>
+
+</layout>

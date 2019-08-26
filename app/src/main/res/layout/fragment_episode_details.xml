@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:paddingBottom="7dp"
+        android:paddingEnd="5dp"
+        android:paddingStart="5dp"
+        android:paddingTop="7dp">
+        
+        <TextView
+            android:id="@+id/noResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:drawableTop="@drawable/ic_sad"
+            android:gravity="center"
+            android:text="@string/no_results"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:visibility="@{empty?View.VISIBLE:View.GONE,default=gone}" />
+        
+        
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/pagedRV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{success?View.VISIBLE:View.GONE,default=gone}"
+            app:prv_background_color="@color/transparent" />
+        
+        <com.example.rickandmorty.view.utils.LoadView
+            android:id="@+id/loadingView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:visibility="@{isLoading || error ? View.VISIBLE:View.GONE,default=gone}"
+            app:lv_error_msg="@{errorMsg}"
+            app:lv_status="@{isLoading? LoadView.LOADING:LoadView.ERROR}" />
+    
+    
+    </RelativeLayout>
+    
+    <data>
+        
+        <import type="com.example.rickandmorty.view.adapters.CharactersPagedAdapter" />
+        
+        <import type="android.view.View" />
+        
+        <import type="com.example.rickandmorty.view.utils.LoadView" />
+        
+        <variable
+            name="empty"
+            type="boolean" />
+        
+        <variable
+            name="isLoading"
+            type="boolean" />
+        
+        <variable
+            name="success"
+            type="boolean" />
+        
+        <variable
+            name="error"
+            type="boolean" />
+        
+        <variable
+            name="errorMsg"
+            type="String" />
+    </data>
+
+</layout>

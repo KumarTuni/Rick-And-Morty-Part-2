@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <declare-styleable name="PagedRecyclerView">
+        <attr name="prv_background_color" format="reference" />
+    </declare-styleable>
+    
+    <declare-styleable name="LoadView">
+        <attr name="lv_status" format="enum">
+            <enum name="loading" value="1" />
+            <enum name="error" value="2" />
+        </attr>
+        <attr name="lv_error_msg" format="string"/>
+        
+    </declare-styleable>
+
+</resources>
